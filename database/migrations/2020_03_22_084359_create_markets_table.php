@@ -19,7 +19,7 @@ class CreateMarketsTable extends Migration
             $table->double('lat');
             $table->double('long');
             $table->text('address');
-            $table->boolean('active')->default(0);
+            $table->boolean('active')->default(false);
             $table->softDeletes();
             $table->timestamps();
         });

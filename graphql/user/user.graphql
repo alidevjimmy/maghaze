@@ -1,0 +1,31 @@
+extend type Query {
+    users: User! @paginate(defaultCount : 10)
+    me: User @auth(guard : "api")
+    User(id : ID!): User @find
+}
+extend type Mutation {
+    login(input: LoginInput @spread): User @field(resolver : "AuthMutator@login")
+    register(input: RegisterInput @spread): User! @field(resolver : "AuthMutator@register")
+}
+
+input LoginInput {
+    phone : String! @rules(apply : ["required"] , messages : {required : "فیلد شماره تماس الزامی است"})
+    password : String! @rules(apply : ["required"] , messages : {required : "فیلد رمز عبور الزامی است"})
+}
+
+input RegisterInput {
+    name : String! @rules(apply : ["required"] , messages : {required : "فیلد نام الزامی است"})
+    family : String! @rules(apply : ["required"] , messages : {required : "فیلد نام خانوادگی الزامی است"})
+    phone : String! @rules(apply : ["required"] , messages : {required : "فیلد شماره تماس الزامی است"})
+    password : String! @rules(apply : ["required"] , messages : {required : "فیلد رمز عبور الزامی است"}) @bcrypt
+}
+
+type User {
+    id : ID!
+    name : String!
+    family : String!
+    phone : String!
+    active : Boolean!
+    verify_at : String
+    token : String
+}

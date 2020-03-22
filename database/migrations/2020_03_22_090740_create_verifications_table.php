@@ -18,7 +18,7 @@ class CreateVerificationsTable extends Migration
             $table->integer('code');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->boolean('used')->default(0);
+            $table->boolean('used')->default(false);
             $table->softDeletes();
             $table->timestamps();
         });

@@ -17,8 +17,8 @@ class CreateProductsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->integer('price');
-            $table->tinyInteger('rate')->default(0);
-            $table->integer('sell_count')->default(0);
+            $table->tinyInteger('rate')->default(false);
+            $table->integer('sell_count')->default(false);
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->softDeletes();

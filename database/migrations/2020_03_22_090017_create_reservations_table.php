@@ -19,7 +19,7 @@ class CreateReservationsTable extends Migration
             $table->foreign('cart_id')->references('id')->on('carts')->onDelete('cascade');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('locations')->onDelete('cascade');
-            $table->boolean('checked')->default(0);
+            $table->boolean('checked')->default(false);
             $table->unsignedBigInteger('delivery_id');
             $table->foreign('delivery_id')->references('id')->on('deliveries')->onDelete('cascade');
             $table->unsignedBigInteger('market_id');

@@ -8,6 +8,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Delivery extends Model
 {
     use SoftDeletes;
+    protected $fillable = [
+        'market_id',
+        'name',
+        'family',
+        'phone',
+        'melli_code',
+        'address'
+    ];
 
     public function market()
     {
