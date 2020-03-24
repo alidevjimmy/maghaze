@@ -3,3 +3,6 @@ type Query
 type Mutation
 
 #import user/user.graphql
+#import category/category.graphql
+#import product/product.graphql
+#import image/image.graphql

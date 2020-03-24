@@ -1,0 +1,12 @@
+extend type Query {
+    categories : Category! @paginate(defaultCount : 10)
+    category(id : ID! @eq): Category @find
+}
+
+type Category{
+    id : ID!
+    name : String!
+    parent_id : ID
+    description : String!
+    products : [Product!]! @hasMany(type : "paginator")
+}

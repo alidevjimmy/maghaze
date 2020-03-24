@@ -1,0 +1,9 @@
+extend type Query {
+    markets : Market! @paginate(defaultCount : 10)
+    market(id : ID! @eq): Market @find
+}
+
+type Market {
+    id : ID!
+    name : String!
+}

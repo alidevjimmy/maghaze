@@ -1,11 +1,12 @@
 extend type Query {
     users: User! @paginate(defaultCount : 10)
     me: User @auth(guard : "api")
-    User(id : ID!): User @find
+    User(id : ID! @eq): User @find
 }
 extend type Mutation {
-    login(input: LoginInput @spread): User @field(resolver : "AuthMutator@login")
+    login(input: LoginInput @spread): String @field(resolver : "AuthMutator@login")
     register(input: RegisterInput @spread): User! @field(resolver : "AuthMutator@register")
+    logout: String @middleware(checks : ["jwt.auth"]) @field(resolver : "AuthMutator@logout")
 }
 
 input LoginInput {
@@ -17,7 +18,7 @@ input RegisterInput {
     name : String! @rules(apply : ["required"] , messages : {required : "فیلد نام الزامی است"})
     family : String! @rules(apply : ["required"] , messages : {required : "فیلد نام خانوادگی الزامی است"})
     phone : String! @rules(apply : ["required"] , messages : {required : "فیلد شماره تماس الزامی است"})
-    password : String! @rules(apply : ["required"] , messages : {required : "فیلد رمز عبور الزامی است"}) @bcrypt
+    password : String! @rules(apply : ["required"] , messages : {required : "فیلد رمز عبور الزامی است"})
 }
 
 type User {

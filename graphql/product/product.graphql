@@ -1,0 +1,15 @@
+extend type Query {
+    products : Product! @paginate(defaultCount : 10)
+    product(id : ID! @eq): Product @find
+}
+
+type Product {
+    id : ID!
+    name : String!
+    price : Int!
+    rate : Int!
+    sell_count : String!
+    category : Category! @belongsTo
+    image : Image! @morphOne
+    markets : [Market!]! @belongsToMany
+}

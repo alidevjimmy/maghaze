@@ -1,0 +1,13 @@
+extend type Query {
+    images : Image! @paginate(defaultCount : 10)
+    image(id : ID! @eq): Image @find
+}
+
+union Imageable = Product
+
+type Image {
+    id : ID!
+    name : String!
+    url : String!
+    imageable : Imageable! @morphTo
+}
