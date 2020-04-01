@@ -1,0 +1,13 @@
+extend type Query {
+    reservations : Reservation! @paginate(defaultCount : 10)
+    reservation(id : ID! @eq): Reservation @find
+}
+
+type Reservation {
+    id : ID!
+    checked : Boolean!
+    user : User! @belongsTo
+    cart : Cart! @belongsTo
+    delivery : Delivery! @belongsTo
+    market : Market! @belongsTo
+}

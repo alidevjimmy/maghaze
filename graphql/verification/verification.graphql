@@ -1,0 +1,11 @@
+extend type Query {
+    verifications : Verification! @paginate(defaultCount : 10)
+    verification(id : ID! @eq): Verification @find
+}
+
+type Verification {
+    id : ID!
+    code : Int!
+    used : Boolean!
+    user : User! @belongsTo
+}

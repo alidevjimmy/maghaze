@@ -1,0 +1,15 @@
+extend type Query {
+    deliveries : Delivery! @paginate(defaultCount : 10)
+    delivery(id : ID! @eq): Delivery @find
+}
+
+type Delivery {
+    id : ID!
+    name : String!
+    family : String!
+    phone : String!
+    melli_code : String!
+    address : String!
+    market : Market! @belongsTo
+    reservations : [Reservation!]! @hasMany
+}

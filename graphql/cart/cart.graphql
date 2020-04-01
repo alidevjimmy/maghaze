@@ -1,0 +1,10 @@
+extend type Query {
+    carts : Cart! @paginate(defaultCount : 10)
+    cart(id : ID! @eq): Cart @find
+}
+
+type Cart {
+    id : ID!
+    trashed : Boolean!
+    user : User! @belongsTo
+}

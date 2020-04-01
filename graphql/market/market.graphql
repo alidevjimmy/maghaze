@@ -6,4 +6,10 @@ extend type Query {
 type Market {
     id : ID!
     name : String!
+    lat : Float!
+    long : Float!
+    address : String!
+    active : Boolean!
+    products : [Product!]! @belongsToMany(type : "paginator")
+    deliveries : [Delivery!]! @hasMany(type: "paginator")
 }

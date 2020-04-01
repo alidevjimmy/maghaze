@@ -22,7 +22,7 @@ class Product extends Model
 
     public function markets()
     {
-        return $this->belongsToMany(Markets::class);
+        return $this->belongsToMany(Market::class);
     }
 
     public function image()

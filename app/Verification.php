@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Verification extends Model
 {
     use SoftDeletes;
+    protected $fillable = ['used', 'user_id', 'code'];
 
     public function user()
     {

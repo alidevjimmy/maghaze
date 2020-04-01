@@ -6,3 +6,9 @@ type Mutation
 #import category/category.graphql
 #import product/product.graphql
 #import image/image.graphql
+#import market/market.graphql
+#import delivery/delivery.graphql
+#import reservation/reservation.graphql
+#import cart/cart.graphql
+#import verification/verification.graphql
+#import location/location.graphql

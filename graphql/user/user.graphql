@@ -7,6 +7,14 @@ extend type Mutation {
     login(input: LoginInput @spread): String @field(resolver : "AuthMutator@login")
     register(input: RegisterInput @spread): User! @field(resolver : "AuthMutator@register")
     logout: String @middleware(checks : ["jwt.auth"]) @field(resolver : "AuthMutator@logout")
+    checkCode(code : String!): Message! @middleware(checks : ["jwt.auth"]) @field(resolver : "AuthMutator@checkCode")
+    SendCodeAgain: Message! @middleware(checks : ["jwt.auth"]) @field(resolver : "AuthMutator@sendCodeAgain")
+}
+
+type Message {
+    status : String!
+    message : String!
+    statusCode : Int!
 }
 
 input LoginInput {
@@ -29,4 +37,8 @@ type User {
     active : Boolean!
     verify_at : String
     token : String
+    locations : [Location!]! @hasMany(type: "paginator")
+    carts : [Cart!]! @hasMany(type: "paginator")
+    reservations : [Reservation!]! @hasMany(type: "paginator")
+    verifications : [Verification!]! @hasMany(type: "paginator")
 }

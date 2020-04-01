@@ -1,0 +1,12 @@
+extend type Query {
+    locations : Location! @paginate(defaultCount : 10)
+    location(id : ID! @eq): Location @find
+}
+
+type Location {
+    id : ID!
+    lat : Float!
+    long : Float!
+    address : String!
+    user : User! @belongsTo
+}

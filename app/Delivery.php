@@ -19,7 +19,7 @@ class Delivery extends Model
 
     public function market()
     {
-        return $this->belongsTo(Markets::class);
+        return $this->belongsTo(Market::class);
     }
 
     public function reservations()

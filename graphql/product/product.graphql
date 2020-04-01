@@ -11,5 +11,5 @@ type Product {
     sell_count : String!
     category : Category! @belongsTo
     image : Image! @morphOne
-    markets : [Market!]! @belongsToMany
+    markets : [Market!]! @belongsToMany(type : "paginator")
 }
